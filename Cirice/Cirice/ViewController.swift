@@ -13,9 +13,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(CiriceSDK().text)
+
+        Task {
+            await getAllTexts()
+        }
     }
 
-
+    func getAllTexts() async {
+        do {
+            let result = try await CiriceSDK().getAllTexts()
+            print(result.texts)
+        } catch {
+            print(error)
+        }
+    }
 }
 
