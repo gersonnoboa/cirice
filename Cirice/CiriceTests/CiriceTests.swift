@@ -1,10 +1,3 @@
-//
-//  CiriceTests.swift
-//  CiriceTests
-//
-//  Created by Gerson Noboa on 08.06.2022.
-//
-
 import XCTest
 @testable import Cirice
 

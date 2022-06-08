@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Cirice
-//
-//  Created by Gerson Noboa on 08.06.2022.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
