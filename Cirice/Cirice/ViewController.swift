@@ -14,15 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        Task {
-            await getAllTexts()
-        }
+        getAllTexts()
     }
 
-    func getAllTexts() async {
+    func getAllTexts() {
         do {
-            let result = try await CiriceSDK().getAllTexts()
-            print(result.texts)
+            try CiriceSDK().getAllTexts(using: UIImage(named: "elamisluba")!)
         } catch {
             print(error)
         }

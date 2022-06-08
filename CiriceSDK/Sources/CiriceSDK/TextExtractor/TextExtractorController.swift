@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TextExtractorControllable: AnyObject {
-    func getAllTexts() async throws -> TextExtractorResult
+    func getAllTexts(using image: UIImage)
 }
 
 extension TextExtractorControllable where Self == TextExtractorController {
@@ -25,7 +26,7 @@ extension TextExtractorControllable where Self == TextExtractorController {
 class TextExtractorController: TextExtractorControllable {
     var interactable: TextExtractorInteractable?
 
-    func getAllTexts() async throws -> TextExtractorResult {
-        return TextExtractorResult(texts: ["Hola"])
+    func getAllTexts(using image: UIImage) {
+        interactable?.getAllTexts(using: image)
     }
 }

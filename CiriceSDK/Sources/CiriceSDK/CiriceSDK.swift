@@ -1,3 +1,5 @@
+import UIKit
+
 public struct CiriceSDK {
     public private(set) var text = "Hello, World!"
 
@@ -7,7 +9,7 @@ public struct CiriceSDK {
         textExtractorControllable = .live
     }
 
-    public func getAllTexts() async throws -> TextExtractorResult {
-        return try await textExtractorControllable.getAllTexts()
+    public func getAllTexts(using image: UIImage) {
+        textExtractorControllable.getAllTexts(using: image)
     }
 }
