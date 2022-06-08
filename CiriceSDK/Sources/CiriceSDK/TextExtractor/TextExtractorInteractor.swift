@@ -7,31 +7,28 @@
 
 import Foundation
 import UIKit
+
 protocol TextExtractorInteractable {
-    func getAllTexts(using image: UIImage)
+    func getTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse
+}
+
+extension TextExtractorInteractable where Self == TextExtractorInteractor {
+    static var live: TextExtractorInteractable { TextExtractorInteractor() }
 }
 
 class TextExtractorInteractor: TextExtractorInteractable {
-    private let presentable: TextExtractorPresentable
-    lazy var imageRecognitionCapable: ImageRecognitionCapable = { VisionImageRecognition() }()
-    init(presentable: TextExtractorPresentable) {
-        self.presentable = presentable
+    private let imageRecognitionCapable: ImageRecognitionCapable
+
+    init(imageRecognitionCapable: ImageRecognitionCapable = .live) {
+        self.imageRecognitionCapable = imageRecognitionCapable
     }
 
-    func getAllTexts(using image: UIImage) {
-        let request = TextImageRecognitionRequest(image: image)
+    func getTexts(using textExtractorRequest: TextExtractorRequest) async throws -> TextExtractorResponse {
+        let imageRecognitionRequest = TextImageRecognitionRequest(image: textExtractorRequest.image)
+        let imageRecognitionResponse = try await imageRecognitionCapable.recognizedTexts(using: imageRecognitionRequest)
+        let textExtractorResponse = TextExtractorResponse(texts: imageRecognitionResponse.texts)
 
-        do {
-            try imageRecognitionCapable.performTextRecognition(request: request) { result in
-                switch result {
-                case .success(let response):
-                    print(response)
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        } catch {
-            print("Failure")
-        }
+        return textExtractorResponse
+
     }
 }

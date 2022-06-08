@@ -9,17 +9,21 @@ import UIKit
 import CiriceSDK
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
-        getAllTexts()
+        Task {
+            await getAllTexts()
+        }
     }
 
-    func getAllTexts() {
+    func getAllTexts() async {
+        guard let image = UIImage(named: "elamisluba") else { return }
+
         do {
-            try CiriceSDK().getAllTexts(using: UIImage(named: "elamisluba")!)
+            let request = TextExtractorRequest(image: image)
+            let response = try await CiriceSDK().getAllTexts(using: request)
+            print(response.texts)
         } catch {
             print(error)
         }

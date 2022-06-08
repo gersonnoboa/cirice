@@ -1,15 +1,21 @@
 import UIKit
 
-public struct CiriceSDK {
-    public private(set) var text = "Hello, World!"
+protocol CiriceSDKCapable {
+    func getAllTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse
+}
 
-    private let textExtractorControllable: TextExtractorControllable
+public struct CiriceSDK: CiriceSDKCapable {
+    private let textExtractorInteractable: TextExtractorInteractable
 
     public init() {
-        textExtractorControllable = .live
+        self.textExtractorInteractable = .live
     }
 
-    public func getAllTexts(using image: UIImage) {
-        textExtractorControllable.getAllTexts(using: image)
+    init(textExtractorInteractable: TextExtractorInteractable) {
+        self.textExtractorInteractable = textExtractorInteractable
+    }
+
+    public func getAllTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse {
+        return try await textExtractorInteractable.getTexts(using: request)
     }
 }

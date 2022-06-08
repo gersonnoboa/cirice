@@ -8,5 +8,5 @@
 import Foundation
 
 struct TextImageRecognitionResponse {
-    var strings: [String]
+    var texts: [String]
 }

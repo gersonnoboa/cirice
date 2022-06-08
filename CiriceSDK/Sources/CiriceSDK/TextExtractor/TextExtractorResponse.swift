@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct TextExtractorResult {
+public struct TextExtractorResponse {
     public var texts: [String]
 }
