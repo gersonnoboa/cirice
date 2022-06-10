@@ -1,5 +1,5 @@
 import Foundation
 
-struct TextImageRecognitionResponse {
+struct TextImageRecognitionResponse: Equatable {
     var texts: [String]
 }

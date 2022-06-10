@@ -16,6 +16,12 @@ public struct CiriceSDK: CiriceSDKCapable {
     }
 
     public func getAllTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse {
-        return try await textExtractorInteractable.getTexts(using: request)
+        do {            
+            return try await textExtractorInteractable.getTexts(using: request)
+        } catch let error as VisionImageRecognitionError {
+            throw CiriceError.textExtractor(error)
+        } catch {
+            throw CiriceError.unknown
+        }
     }
 }

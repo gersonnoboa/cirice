@@ -1,7 +1,7 @@
 import Foundation
 import Vision
 
-class VisionImageRecognition: ImageRecognitionCapable {
+final class VisionImageRecognition: ImageRecognitionCapable {
     func recognizedTexts(
         using request: TextImageRecognitionRequest
     ) async throws -> TextImageRecognitionResponse {
@@ -22,7 +22,7 @@ class VisionImageRecognition: ImageRecognitionCapable {
         completion: @escaping TextImageRecognitionCapableCompletion
     ) {
         guard let cgImage = request.image.cgImage else {
-            completion(.failure(CiriceError.unknown))
+            completion(.failure(VisionImageRecognitionError.noImage))
             return
         }
 
@@ -34,18 +34,22 @@ class VisionImageRecognition: ImageRecognitionCapable {
         do {
             try imageRequestHandler.perform([request])
         } catch {
-            completion(.failure(CiriceError.unknown))
+            completion(.failure(
+                VisionImageRecognitionError.visionError(error.localizedDescription)
+            ))
         }
     }
 
     private func recognizeTextHandler(request: VNRequest, error: Error?, completion: TextImageRecognitionCapableCompletion) {
         if let error = error {
-            completion(.failure(error))
+            completion(.failure(
+                VisionImageRecognitionError.visionError(error.localizedDescription)
+            ))
             return
         }
 
         guard let observations = request.results as? [VNRecognizedTextObservation] else {
-            completion(.failure(CiriceError.unknown))
+            completion(.failure(VisionImageRecognitionError.noResults))
             return
         }
 
