@@ -15,8 +15,8 @@ public struct CiriceSDK: CiriceSDKCapable {
     }
 
     init(
-        textExtractorInteractable: TextExtractorInteractable,
-        faceExtractorInteractable: FaceExtractorInteractable
+        textExtractorInteractable: TextExtractorInteractable = .live,
+        faceExtractorInteractable: FaceExtractorInteractable = .live
     ) {
         self.textExtractorInteractable = textExtractorInteractable
         self.faceExtractorInteractable = faceExtractorInteractable

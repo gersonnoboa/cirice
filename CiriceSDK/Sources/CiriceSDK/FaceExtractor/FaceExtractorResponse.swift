@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
 
-public struct FaceExtractorResponse {
+public struct FaceExtractorResponse: Equatable {
     public let faceImages: [UIImage]
 }
