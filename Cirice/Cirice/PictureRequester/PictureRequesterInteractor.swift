@@ -15,18 +15,13 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
     }
 
     func executeGetAllTexts(using image: UIImage) async {
-        guard let elamislubaImage = UIImage(named: "elamisluba") else {
-            presentable.presentInvalidImageError()
-            return
-        }
-
         do {
-            let request = TextExtractorRequest(image: elamislubaImage)
+            let request = TextExtractorRequest(image: image)
             let response = try await CiriceSDK().getAllTexts(using: request)
 
             presentable.presentAllTexts(
                 texts: response.texts,
-                originalImage: elamislubaImage
+                originalImage: image
             )
         } catch {
             presentable.presentExtractionError(error: error)
@@ -34,13 +29,8 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
     }
 
     func executeGetFace(using image: UIImage) async {
-        guard let maxImage = UIImage(named: "max") else {
-            presentable.presentInvalidImageError()
-            return
-        }
-
         do {
-            let request = FaceExtractorRequest(image: maxImage)
+            let request = FaceExtractorRequest(image: image)
             let response = try await CiriceSDK().getFaces(using: request)
 
             guard let face = response.faceImages.first else {
@@ -50,7 +40,7 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
             
             presentable.presentFace(
                 image: face,
-                originalImage: maxImage
+                originalImage: image
             )
         } catch CiriceError.faceExtractor(let error)
             where error == VisionImageRecognitionError.maximumExceeded  {

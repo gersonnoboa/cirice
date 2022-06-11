@@ -25,6 +25,7 @@
 		315863DA2855078400814E3A /* PictureRequesterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863D92855078400814E3A /* PictureRequesterInteractor.swift */; };
 		315863DC2855079700814E3A /* PictureRequesterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863DB2855079700814E3A /* PictureRequesterPresenter.swift */; };
 		315863DE28550CCC00814E3A /* CiriceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863DD28550CCC00814E3A /* CiriceRouter.swift */; };
+		315863E028551BEB00814E3A /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863DF28551BEB00814E3A /* ImagePickerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		315863D92855078400814E3A /* PictureRequesterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRequesterInteractor.swift; sourceTree = "<group>"; };
 		315863DB2855079700814E3A /* PictureRequesterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRequesterPresenter.swift; sourceTree = "<group>"; };
 		315863DD28550CCC00814E3A /* CiriceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceRouter.swift; sourceTree = "<group>"; };
+		315863DF28551BEB00814E3A /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				315863D42854F54F00814E3A /* PictureRequesterViewController.swift */,
 				315863D92855078400814E3A /* PictureRequesterInteractor.swift */,
 				315863DB2855079700814E3A /* PictureRequesterPresenter.swift */,
+				315863DF28551BEB00814E3A /* ImagePickerDelegate.swift */,
 			);
 			path = PictureRequester;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315863E028551BEB00814E3A /* ImagePickerDelegate.swift in Sources */,
 				315863DC2855079700814E3A /* PictureRequesterPresenter.swift in Sources */,
 				313E4F2E28510C0000DC7CFD /* MainViewController.swift in Sources */,
 				315863CE2854E4F900814E3A /* MainTableViewCell.swift in Sources */,
@@ -508,7 +512,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
+				DEVELOPMENT_TEAM = HDDM6H9KFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cirice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -521,7 +525,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.Cirice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heavenlapse.Cirice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -536,7 +540,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
+				DEVELOPMENT_TEAM = HDDM6H9KFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cirice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -549,7 +553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.Cirice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heavenlapse.Cirice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -21,15 +21,13 @@ final class PictureRequesterViewController: UIViewController {
 
     var requestType: RequestType = .texts
     var interactable: PictureRequesterInteractable?
+    let imagePickerDelegate = ImagePickerDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViewController()
-
-        Task {
-            await startExtraction()
-        }
+        takePicture()
     }
 
     private func configureViewController() {
@@ -38,20 +36,33 @@ final class PictureRequesterViewController: UIViewController {
         stackView.isHidden = true
     }
 
-    @objc func onCameraImageViewTapped() {
-        activityIndicator.startAnimating()
-
-        Task {
-            await startExtraction()
+    private func takePicture() {
+        imagePickerDelegate.onImagePicked = { [weak self] image in
+            Task {
+                await self?.startExtraction(using: image)
+            }
         }
+
+        imagePickerDelegate.onCancel = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .camera
+        imagePickerController.allowsEditing = false
+        imagePickerController.cameraCaptureMode = .photo
+        imagePickerController.cameraFlashMode = .off
+        imagePickerController.delegate = imagePickerDelegate
+
+        present(imagePickerController, animated: true)
     }
 
-    private func startExtraction() async {
+    private func startExtraction(using image: UIImage) async {
         switch requestType {
         case .texts:
-            await interactable?.executeGetAllTexts(using: UIImage.add)
+            await interactable?.executeGetAllTexts(using: image)
         case .face:
-            await interactable?.executeGetFace(using: UIImage.add)
+            await interactable?.executeGetFace(using: image)
         }
     }
 }
@@ -91,5 +102,15 @@ extension PictureRequesterViewController: PictureRequesterControllable {
         alert.addAction(action)
 
         present(alert, animated: true)
+    }
+}
+
+extension UIImagePickerController {
+    open override var childForStatusBarHidden: UIViewController? {
+        return nil
+    }
+
+    open override var prefersStatusBarHidden: Bool {
+        return true
     }
 }
