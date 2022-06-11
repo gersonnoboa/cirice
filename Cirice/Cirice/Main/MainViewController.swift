@@ -1,5 +1,5 @@
+import Foundation
 import UIKit
-import CiriceSDK
 
 class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -13,11 +13,16 @@ class MainViewController: UIViewController {
         configureTableView()
     }
 
+    private func configureViewController() {
+        title = "Cirice"
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     private func configureTableView() {
         tableView.dataSource = dataSource
         tableView.delegate = delegate
 
-        delegate.rowSelected = { [weak self] _ in
+        delegate.onRowSelected = { [weak self] row in
             self?.transitionToPictureRequester()
         }
     }
@@ -26,40 +31,14 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "MainToPictureRequester", sender: nil)
     }
 
-    private func configureViewController() {
-        title = "Cirice"
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let selectedRow = delegate.selectedRow,
+            let requestType = RequestType(rawValue: selectedRow)
+        else { return }
 
-    func getAllTexts() async {
-        guard let image = UIImage(named: "elamisluba") else { return }
-
-        do {
-            let request = TextExtractorRequest(image: image)
-            let response = try await CiriceSDK().getAllTexts(using: request)
-            print(response.texts)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func getFaces() async {
-        guard let image = UIImage(named: "family") else { return }
-
-        do {
-            let request = FaceExtractorRequest(image: image)
-            let response = try await CiriceSDK().getFaces(using: request)
-
-            DispatchQueue.main.async { [weak self] in
-                for (idx, image) in response.faceImages.enumerated() {
-                    let imageView = UIImageView(frame: CGRect(x: 100, y: (idx*100) + 100, width: 100, height: 100))
-                    imageView.image = image
-                    self?.view.addSubview(imageView)
-                }
-            }
-        } catch {
-            print(error)
-        }
+        let destination = segue.destination as? PictureRequesterViewController
+        destination?.requestType = requestType
     }
 }
 

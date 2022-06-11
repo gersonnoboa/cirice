@@ -2,9 +2,11 @@ import Foundation
 import UIKit
 
 final class MainDelegate: NSObject, UITableViewDelegate {
-    var rowSelected: ((Int) -> Void)?
+    var onRowSelected: ((Int) -> Void)?
+    private(set) var selectedRow: Int?
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rowSelected?(indexPath.row)
+        selectedRow = indexPath.row
+        onRowSelected?(indexPath.row)
     }
 }

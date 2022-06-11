@@ -21,6 +21,7 @@
 		315863C82854E04900814E3A /* MainDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863C72854E04900814E3A /* MainDelegate.swift */; };
 		315863CE2854E4F900814E3A /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863CD2854E4F900814E3A /* MainTableViewCell.swift */; };
 		315863D52854F54F00814E3A /* PictureRequesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863D42854F54F00814E3A /* PictureRequesterViewController.swift */; };
+		315863D72854F8C300814E3A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863D62854F8C300814E3A /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		315863C72854E04900814E3A /* MainDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDelegate.swift; sourceTree = "<group>"; };
 		315863CD2854E4F900814E3A /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		315863D42854F54F00814E3A /* PictureRequesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRequesterViewController.swift; sourceTree = "<group>"; };
+		315863D62854F8C300814E3A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		313E4F2828510BFF00DC7CFD /* Cirice */ = {
 			isa = PBXGroup;
 			children = (
+				315863D82854F8CB00814E3A /* Models */,
 				315863D32854F3DF00814E3A /* ImageRequester */,
 				315863C42854E02300814E3A /* Main */,
 				313E4F2928510BFF00DC7CFD /* AppDelegate.swift */,
@@ -165,6 +168,14 @@
 				315863D42854F54F00814E3A /* PictureRequesterViewController.swift */,
 			);
 			path = ImageRequester;
+			sourceTree = "<group>";
+		};
+		315863D82854F8CB00814E3A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				315863D62854F8C300814E3A /* Models.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 				313E4F2E28510C0000DC7CFD /* MainViewController.swift in Sources */,
 				315863CE2854E4F900814E3A /* MainTableViewCell.swift in Sources */,
 				313E4F2A28510BFF00DC7CFD /* AppDelegate.swift in Sources */,
+				315863D72854F8C300814E3A /* Models.swift in Sources */,
 				315863D52854F54F00814E3A /* PictureRequesterViewController.swift in Sources */,
 				313E4F2C28510BFF00DC7CFD /* SceneDelegate.swift in Sources */,
 				315863C82854E04900814E3A /* MainDelegate.swift in Sources */,
