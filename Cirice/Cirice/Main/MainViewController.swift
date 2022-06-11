@@ -32,13 +32,10 @@ class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let selectedRow = delegate.selectedRow,
-            let requestType = RequestType(rawValue: selectedRow)
-        else { return }
-
-        let destination = segue.destination as? PictureRequesterViewController
-        destination?.requestType = requestType
+        CiriceRouter.preparePictureRequesterViewController(
+            segue: segue,
+            selectedRow: delegate.selectedRow
+        )
     }
 }
 

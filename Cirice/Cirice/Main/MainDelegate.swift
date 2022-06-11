@@ -8,5 +8,7 @@ final class MainDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
         onRowSelected?(indexPath.row)
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
