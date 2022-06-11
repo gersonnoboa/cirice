@@ -16,8 +16,8 @@ class TextExtractorInteractor: TextExtractorInteractable {
         self.imageRecognitionCapable = imageRecognitionCapable
     }
 
-    func getTexts(using textExtractorRequest: TextExtractorRequest) async throws -> TextExtractorResponse {
-        let imageRecognitionRequest = TextImageRecognitionRequest(image: textExtractorRequest.image)
+    func getTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse {
+        let imageRecognitionRequest = TextImageRecognitionRequest(image: request.image)
         let imageRecognitionResponse = try await imageRecognitionCapable.recognizedTexts(using: imageRecognitionRequest)
         let textExtractorResponse = TextExtractorResponse(texts: imageRecognitionResponse.texts)
 
