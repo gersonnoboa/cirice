@@ -37,6 +37,11 @@ final class PictureRequesterViewController: UIViewController {
     }
 
     private func takePicture() {
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showError(message: "Camera is not available.")
+            return
+        }
+
         imagePickerDelegate.onImagePicked = { [weak self] image in
             Task {
                 await self?.startExtraction(using: image)
