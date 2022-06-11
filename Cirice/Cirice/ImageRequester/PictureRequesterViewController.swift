@@ -7,9 +7,11 @@ final class PictureRequesterViewController: UIViewController {
         case invalidImage
     }
 
-    @IBOutlet weak var cameraImageView: UIImageView!
+    @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var resultImageView: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var requestType: RequestType = .texts
 
@@ -18,11 +20,11 @@ final class PictureRequesterViewController: UIViewController {
 
         configureViewController()
         addTouchRecognizerToCameraImageView()
+        onCameraImageViewTapped()
     }
 
     private func configureViewController() {
-        title = "Upload your picture"
-        navigationItem.prompt = "Touch the camera icon to take a picture"
+        title = "Extraction"
 
         prepareInterfaceForResult()
     }
@@ -30,16 +32,18 @@ final class PictureRequesterViewController: UIViewController {
     private func prepareInterfaceForResult() {
         resultTextView.isHidden = requestType == .face
         resultImageView.isHidden = requestType == .texts
+        stackView.isHidden = true
+        activityIndicator.startAnimating()
     }
 
     private func addTouchRecognizerToCameraImageView() {
-        cameraImageView.isUserInteractionEnabled = true
+        pictureImageView.isUserInteractionEnabled = true
 
         let tapRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(onCameraImageViewTapped)
         )
-        cameraImageView.addGestureRecognizer(tapRecognizer)
+        pictureImageView.addGestureRecognizer(tapRecognizer)
     }
 
     @objc func onCameraImageViewTapped() {
@@ -49,6 +53,10 @@ final class PictureRequesterViewController: UIViewController {
     }
 
     private func startExtraction() async {
+        defer {
+            activityIndicator.stopAnimating()
+        }
+        
         do {
             switch requestType {
             case .texts:
@@ -61,6 +69,7 @@ final class PictureRequesterViewController: UIViewController {
                 resultImageView.image = faceImage
 
             }
+            stackView.isHidden = false
         } catch is PictureRequesterError {
             let alert = UIAlertController(
                 title: "Error",
@@ -80,7 +89,7 @@ final class PictureRequesterViewController: UIViewController {
             throw PictureRequesterError.invalidImage
         }
 
-        cameraImageView.image = image
+        pictureImageView.image = image
 
         do {
             let request = TextExtractorRequest(image: image)
@@ -95,7 +104,7 @@ final class PictureRequesterViewController: UIViewController {
             throw PictureRequesterError.invalidImage
         }
 
-        cameraImageView.image = image
+        pictureImageView.image = image
 
         do {
             let request = FaceExtractorRequest(image: image)
