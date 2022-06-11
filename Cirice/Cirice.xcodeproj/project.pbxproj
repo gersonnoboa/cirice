@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		313E4F2A28510BFF00DC7CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F2928510BFF00DC7CFD /* AppDelegate.swift */; };
 		313E4F2C28510BFF00DC7CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F2B28510BFF00DC7CFD /* SceneDelegate.swift */; };
-		313E4F2E28510C0000DC7CFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F2D28510C0000DC7CFD /* ViewController.swift */; };
+		313E4F2E28510C0000DC7CFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F2D28510C0000DC7CFD /* MainViewController.swift */; };
 		313E4F3128510C0000DC7CFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F2F28510C0000DC7CFD /* Main.storyboard */; };
 		313E4F3328510C0100DC7CFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F3228510C0100DC7CFD /* Assets.xcassets */; };
 		313E4F3628510C0100DC7CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F3428510C0100DC7CFD /* LaunchScreen.storyboard */; };
@@ -17,6 +17,10 @@
 		313E4F4B28510C0100DC7CFD /* CiriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F4A28510C0100DC7CFD /* CiriceUITests.swift */; };
 		313E4F4D28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F4C28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift */; };
 		313E4F5C28510C6400DC7CFD /* CiriceSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 313E4F5B28510C6400DC7CFD /* CiriceSDK */; };
+		315863C62854E04000814E3A /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863C52854E04000814E3A /* MainDataSource.swift */; };
+		315863C82854E04900814E3A /* MainDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863C72854E04900814E3A /* MainDelegate.swift */; };
+		315863CE2854E4F900814E3A /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863CD2854E4F900814E3A /* MainTableViewCell.swift */; };
+		315863D52854F54F00814E3A /* PictureRequesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863D42854F54F00814E3A /* PictureRequesterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +44,7 @@
 		313E4F2628510BFF00DC7CFD /* Cirice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cirice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		313E4F2928510BFF00DC7CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		313E4F2B28510BFF00DC7CFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		313E4F2D28510C0000DC7CFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		313E4F2D28510C0000DC7CFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		313E4F3028510C0000DC7CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		313E4F3228510C0100DC7CFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		313E4F3528510C0100DC7CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,10 @@
 		313E4F4A28510C0100DC7CFD /* CiriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceUITests.swift; sourceTree = "<group>"; };
 		313E4F4C28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		313E4F5928510C2E00DC7CFD /* CiriceSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CiriceSDK; path = ../CiriceSDK; sourceTree = "<group>"; };
+		315863C52854E04000814E3A /* MainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
+		315863C72854E04900814E3A /* MainDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDelegate.swift; sourceTree = "<group>"; };
+		315863CD2854E4F900814E3A /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		315863D42854F54F00814E3A /* PictureRequesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRequesterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +112,10 @@
 		313E4F2828510BFF00DC7CFD /* Cirice */ = {
 			isa = PBXGroup;
 			children = (
+				315863D32854F3DF00814E3A /* ImageRequester */,
+				315863C42854E02300814E3A /* Main */,
 				313E4F2928510BFF00DC7CFD /* AppDelegate.swift */,
 				313E4F2B28510BFF00DC7CFD /* SceneDelegate.swift */,
-				313E4F2D28510C0000DC7CFD /* ViewController.swift */,
 				313E4F2F28510C0000DC7CFD /* Main.storyboard */,
 				313E4F3228510C0100DC7CFD /* Assets.xcassets */,
 				313E4F3428510C0100DC7CFD /* LaunchScreen.storyboard */,
@@ -137,6 +146,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		315863C42854E02300814E3A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				313E4F2D28510C0000DC7CFD /* MainViewController.swift */,
+				315863C52854E04000814E3A /* MainDataSource.swift */,
+				315863C72854E04900814E3A /* MainDelegate.swift */,
+				315863CD2854E4F900814E3A /* MainTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		315863D32854F3DF00814E3A /* ImageRequester */ = {
+			isa = PBXGroup;
+			children = (
+				315863D42854F54F00814E3A /* PictureRequesterViewController.swift */,
+			);
+			path = ImageRequester;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313E4F2E28510C0000DC7CFD /* ViewController.swift in Sources */,
+				313E4F2E28510C0000DC7CFD /* MainViewController.swift in Sources */,
+				315863CE2854E4F900814E3A /* MainTableViewCell.swift in Sources */,
 				313E4F2A28510BFF00DC7CFD /* AppDelegate.swift in Sources */,
+				315863D52854F54F00814E3A /* PictureRequesterViewController.swift in Sources */,
 				313E4F2C28510BFF00DC7CFD /* SceneDelegate.swift in Sources */,
+				315863C82854E04900814E3A /* MainDelegate.swift in Sources */,
+				315863C62854E04000814E3A /* MainDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

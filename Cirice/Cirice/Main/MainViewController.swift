@@ -1,13 +1,34 @@
 import UIKit
 import CiriceSDK
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    let dataSource = MainDataSource()
+    let delegate = MainDelegate()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Task {
-            await getFaces()
+        configureViewController()
+        configureTableView()
+    }
+
+    private func configureTableView() {
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+
+        delegate.rowSelected = { [weak self] _ in
+            self?.transitionToPictureRequester()
         }
+    }
+
+    private func transitionToPictureRequester() {
+        performSegue(withIdentifier: "MainToPictureRequester", sender: nil)
+    }
+
+    private func configureViewController() {
+        title = "Cirice"
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     func getAllTexts() async {
