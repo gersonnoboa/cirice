@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+/// Data source to be used for the table view in `MainViewController`.
 final class MainDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2

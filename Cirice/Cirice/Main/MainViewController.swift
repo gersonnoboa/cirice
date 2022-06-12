@@ -1,9 +1,15 @@
 import Foundation
 import UIKit
 
+/// View controller that shows the main screen.
 class MainViewController: UIViewController {
+    /// Table view that shows the available options in the app.
     @IBOutlet weak var tableView: UITableView!
+
+    /// Data source to be used for the table view.
     let dataSource = MainDataSource()
+
+    /// Delegate source to be used for the table view.
     let delegate = MainDelegate()
 
     override func viewDidLoad() {
@@ -13,10 +19,12 @@ class MainViewController: UIViewController {
         configureTableView()
     }
 
+    /// Configure initial view controller state.
     private func configureViewController() {
         title = "Cirice"
     }
 
+    /// Configure initial table view state.
     private func configureTableView() {
         tableView.dataSource = dataSource
         tableView.delegate = delegate
@@ -26,6 +34,7 @@ class MainViewController: UIViewController {
         }
     }
 
+    /// Transition to the picture requester view controller..
     private func transitionToPictureRequester() {
         performSegue(withIdentifier: "MainToPictureRequester", sender: nil)
     }

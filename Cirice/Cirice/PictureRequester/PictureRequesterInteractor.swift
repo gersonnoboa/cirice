@@ -2,18 +2,29 @@ import Foundation
 import UIKit
 import CiriceSDK
 
+/// Interface that describes all picture requester interactor actions.
 protocol PictureRequesterInteractable {
+    /// Calls the CiriceSDK to extract all texts from the image.
+    /// - Parameter image: Image sent to the CiriceSDK for extraction.
     func executeGetAllTexts(using image: UIImage) async
+
+    /// Calls the CiriceSDK to extract a face from the image.
+    /// - Parameter image: Image sent to the CiriceSDK for extraction.
     func executeGetFace(using image: UIImage) async
 }
 
+/// Interactor that describes all picture requester actions.
 final class PictureRequesterInteractor: PictureRequesterInteractable {
     let presentable: PictureRequesterPresentable
 
+    /// Initializes a `PictureRequesterInteractor`.
+    /// - Parameter presentable: An instance of `PictureRequesterPresentable`.
     init(presentable: PictureRequesterPresentable) {
         self.presentable = presentable
     }
 
+    /// Calls the CiriceSDK to extract all texts from the image.
+    /// - Parameter image: Image sent to the CiriceSDK for extraction.
     func executeGetAllTexts(using image: UIImage) async {
         do {
             let request = TextExtractorRequest(image: image)
@@ -28,6 +39,8 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
         }
     }
 
+    /// Calls the CiriceSDK to extract a face from the image.
+    /// - Parameter image: Image sent to the CiriceSDK for extraction.
     func executeGetFace(using image: UIImage) async {
         do {
             let request = FaceExtractorRequest(image: image)

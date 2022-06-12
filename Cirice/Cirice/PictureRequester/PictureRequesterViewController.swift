@@ -2,26 +2,52 @@ import Foundation
 import UIKit
 import CiriceSDK
 
+/// Interface that describes the VIP lifecycle of the picture requester view controller.
 protocol PictureRequesterControllable: AnyObject {
+    /// Shows the texts extracted by the CiriceSDK from the image.
+    /// - Parameters:
+    ///   - text: Formatted text to be displayed on screen.
+    ///   - originalImage: Image sent to the CiriceSDK for extraction.
     func showAllTexts(_ text: String, originalImage: UIImage)
+
+    /// Shows the texts extracted by the CiriceSDK from the image.
+    /// - Parameters:
+    ///   - face: Face image to be displayed on screen.
+    ///   - originalImage: Image sent to the CiriceSDK for extraction.
     func showFace(_ faceImage: UIImage, originalImage: UIImage)
+
+
+    /// Shows an error in an alert. Will always show "Error" as title, and will have a
+    /// button with the "OK" text on it to dismiss it.
+    /// - Parameter message: Message to be shown by the alert.
     func showError(message: String)
 }
 
+/// View controller that shows the picture requester functionality on screen.
 final class PictureRequesterViewController: UIViewController {
-    enum PictureRequesterError: Error {
-        case invalidImage
-    }
-
+    /// Shows the picture taken by the user
     @IBOutlet weak var pictureImageView: UIImageView!
+
+    /// Shows the image recognition result when the request type is text.
     @IBOutlet weak var resultTextView: UITextView!
+
+    /// Shows the image recognition result when the request type is face.
     @IBOutlet weak var resultImageView: UIImageView!
+
+    /// Holds all the views in the screen, except for the activity indicator.
     @IBOutlet weak var stackView: UIStackView!
+
+    /// Activity indicator to be shown while the CiriceSDK does its functionality.
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    /// The request type that configures which kind of result is shown to the user.
     var requestType: RequestType = .texts
-    var interactable: PictureRequesterInteractable?
+
+    /// The delegate for the UIImagePickerController.
     let imagePickerDelegate = ImagePickerDelegate()
+
+    var interactable: PictureRequesterInteractable?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +56,14 @@ final class PictureRequesterViewController: UIViewController {
         takePicture()
     }
 
+    /// Configure initial view controller state.
     private func configureViewController() {
         title = "Extraction"
 
         stackView.isHidden = true
     }
 
+    /// Take a picture using an UIImagePickerController.
     private func takePicture() {
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             showError(message: "Camera is not available.")
@@ -62,6 +90,8 @@ final class PictureRequesterViewController: UIViewController {
         present(imagePickerController, animated: true)
     }
 
+    /// Calls the CiriceSDK to extract texts or faces.
+    /// - Parameter image: The image in which operations will be executed.
     private func startExtraction(using image: UIImage) async {
         switch requestType {
         case .texts:
@@ -73,6 +103,10 @@ final class PictureRequesterViewController: UIViewController {
 }
 
 extension PictureRequesterViewController: PictureRequesterControllable {
+    /// Shows the texts extracted by the CiriceSDK from the image.
+    /// - Parameters:
+    ///   - text: Formatted text to be displayed on screen.
+    ///   - originalImage: Image sent to the CiriceSDK for extraction.
     func showAllTexts(_ text: String, originalImage: UIImage) {
         activityIndicator.stopAnimating()
         stackView.isHidden = false
@@ -82,6 +116,10 @@ extension PictureRequesterViewController: PictureRequesterControllable {
         pictureImageView.image = originalImage
     }
 
+    /// Shows the face extracted by the CiriceSDK from the image.
+    /// - Parameters:
+    ///   - face: Face image to be displayed on screen.
+    ///   - originalImage: Image sent to the CiriceSDK for extraction.
     func showFace(_ faceImage: UIImage, originalImage: UIImage) {
         activityIndicator.stopAnimating()
         stackView.isHidden = false
@@ -91,6 +129,9 @@ extension PictureRequesterViewController: PictureRequesterControllable {
         pictureImageView.image = originalImage
     }
 
+    /// Shows an error in an alert. Will always show "Error" as title, and will have a
+    /// button with the "OK" text on it to dismiss it.
+    /// - Parameter message: Message to be shown by the alert.
     func showError(message: String) {
         stackView.isHidden = true
         activityIndicator.stopAnimating()

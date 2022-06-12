@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+/// Delegate to be used for the table view in `MainViewController`.
 final class MainDelegate: NSObject, UITableViewDelegate {
     var onRowSelected: ((Int) -> Void)?
     private(set) var selectedRow: Int?
