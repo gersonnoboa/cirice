@@ -68,8 +68,8 @@ final class VisionImageRecognitionTests: XCTestCase {
             XCTFail("Should fail")
         } catch {
             XCTAssertEqual(
-                error as! VisionImageRecognitionError,
-                VisionImageRecognitionError.maximumExceeded
+                error as! ImageRecognitionError,
+                ImageRecognitionError.maximumExceeded
             )
         }
     }

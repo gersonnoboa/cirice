@@ -20,12 +20,12 @@ class ImageRecognitionCapableFailureMock: ImageRecognitionCapable {
     func recognizedFaces(
         using request: FaceImageRecognitionRequest
     ) async throws -> FaceImageRecognitionResponse {
-        throw VisionImageRecognitionError.noResults
+        throw ImageRecognitionError.noResults
     }
     
     func recognizedTexts(
         using request: TextImageRecognitionRequest
     ) async throws -> TextImageRecognitionResponse {
-        throw VisionImageRecognitionError.noResults
+        throw ImageRecognitionError.noResults
     }
 }

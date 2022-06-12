@@ -32,7 +32,7 @@ public struct CiriceSDK: CiriceSDKCapable {
     ) async throws -> TextExtractorResponse {
         do {            
             return try await textExtractorInteractable.getTexts(using: request)
-        } catch let error as VisionImageRecognitionError {
+        } catch let error as ImageRecognitionError {
             throw CiriceError.textExtractor(error)
         } catch {
             throw CiriceError.unknown
@@ -44,7 +44,7 @@ public struct CiriceSDK: CiriceSDKCapable {
     ) async throws -> FaceExtractorResponse {
         do {
             return try await faceExtractorInteractable.getFaces(using: request)
-        } catch let error as VisionImageRecognitionError {
+        } catch let error as ImageRecognitionError {
             throw CiriceError.faceExtractor(error)
         } catch {
             throw CiriceError.unknown

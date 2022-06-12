@@ -26,7 +26,7 @@ class TextExtractorInteractorTest: XCTestCase {
             let _ = try await interactor?.getTexts(using: request)
             XCTFail("Should not generate texts")
         } catch {
-            XCTAssertEqual(error as? VisionImageRecognitionError, .noResults)
+            XCTAssertEqual(error as? ImageRecognitionError, .noResults)
         }
     }
     

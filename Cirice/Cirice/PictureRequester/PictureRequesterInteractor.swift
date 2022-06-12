@@ -43,7 +43,7 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
                 originalImage: image
             )
         } catch CiriceError.faceExtractor(let error)
-            where error == VisionImageRecognitionError.maximumExceeded  {
+            where error == ImageRecognitionError.maximumExceeded  {
             presentable.presentMaximumNumberOfFacesError()
         } catch {
             presentable.presentExtractionError(error: error)

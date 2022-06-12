@@ -52,7 +52,7 @@ final class CiriceSDKIntegrationTests: XCTestCase {
         } catch CiriceError.faceExtractor(let error) {
             XCTAssertEqual(
                 error,
-                VisionImageRecognitionError.maximumExceeded
+                ImageRecognitionError.maximumExceeded
             )
         } catch {
             XCTFail("Should have been caught")

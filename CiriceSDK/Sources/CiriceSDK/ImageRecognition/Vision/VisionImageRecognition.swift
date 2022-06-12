@@ -60,13 +60,13 @@ extension VisionImageRecognition {
     ) {
         if let error = error {
             completion(.failure(
-                VisionImageRecognitionError.visionError(error.localizedDescription)
+                ImageRecognitionError.internalError(error.localizedDescription)
             ))
             return
         }
 
         guard let observations = request.results as? [VNRecognizedTextObservation] else {
-            completion(.failure(VisionImageRecognitionError.noResults))
+            completion(.failure(ImageRecognitionError.noResults))
             return
         }
 
@@ -109,18 +109,18 @@ extension VisionImageRecognition {
     ) {
         if let error = error {
             completion(.failure(
-                VisionImageRecognitionError.visionError(error.localizedDescription)
+                ImageRecognitionError.internalError(error.localizedDescription)
             ))
             return
         }
 
         guard let observations = visionRequest.results as? [VNFaceObservation] else {
-            completion(.failure(VisionImageRecognitionError.noResults))
+            completion(.failure(ImageRecognitionError.noResults))
             return
         }
 
         if observations.count > faceImageRecognitionRequest.maximumAllowedFaceCount {
-            completion(.failure(VisionImageRecognitionError.maximumExceeded))
+            completion(.failure(ImageRecognitionError.maximumExceeded))
             return
         }
         
@@ -165,7 +165,7 @@ extension VisionImageRecognition {
 extension VisionImageRecognition {
     private func performRequests(_ requests: [VNImageBasedRequest], using image: UIImage) throws {
         guard let cgImage = image.cgImage else {
-            throw VisionImageRecognitionError.noImage
+            throw ImageRecognitionError.noImage
         }
 
         let imageRequestHandler = VNImageRequestHandler(
@@ -175,7 +175,7 @@ extension VisionImageRecognition {
         do {
             try imageRequestHandler.perform(requests)
         } catch {
-            throw VisionImageRecognitionError.visionError(error.localizedDescription)
+            throw ImageRecognitionError.internalError(error.localizedDescription)
         }
     }
 }
