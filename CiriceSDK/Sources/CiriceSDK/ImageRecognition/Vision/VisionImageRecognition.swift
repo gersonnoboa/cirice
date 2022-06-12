@@ -2,25 +2,22 @@ import Foundation
 import Vision
 import UIKit
 
-typealias TextImageRecognitionCapableCompletion = ((Result<TextImageRecognitionResponse, Error>) -> Void)
-typealias FaceImageRecognitionCapableCompletion = ((Result<FaceImageRecognitionResponse, Error>) -> Void)
+typealias TextImageRecognitionCapableCompletion = (
+    (Result<TextImageRecognitionResponse, Error>) -> Void
+)
+typealias FaceImageRecognitionCapableCompletion = (
+    (Result<FaceImageRecognitionResponse, Error>) -> Void
+)
 
+/// This class wraps around the Vision framework in order to conform to `ImageRecognitionCapable`
+/// and send/receive generic requests/responses. If the need arises to use a different framework than
+/// Vision, this class can be replaced, as long as the new one implements `ImageRecognitionCapable`.
 final class VisionImageRecognition: ImageRecognitionCapable {
-    func recognizedFaces(
-        using request: FaceImageRecognitionRequest
-    ) async throws -> FaceImageRecognitionResponse {
-        return try await withCheckedThrowingContinuation { continuation in
-            recognizedFaces(request: request) { result in
-                switch result {
-                case .success(let response):
-                    continuation.resume(returning: response)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        }
-    }
-    
+    /// Gets all the texts recognized from an image.
+    /// - Parameter request: The request to be used for the extraction.
+    /// - Returns: The response that encapsulates the result provided by
+    /// the image recognition framework.
+    /// - Throws: `ImageRecognitionError`
     func recognizedTexts(
         using request: TextImageRecognitionRequest
     ) async throws -> TextImageRecognitionResponse {
@@ -35,9 +32,34 @@ final class VisionImageRecognition: ImageRecognitionCapable {
             }
         }
     }
+
+    /// Gets the faces recognized from an image.
+    /// - Parameter request: The request to be used for the extraction.
+    /// - Returns: The response that encapsulates the result provided by
+    /// the image recognition framework.
+    /// - Throws: `ImageRecognitionError`
+    func recognizedFaces(
+        using request: FaceImageRecognitionRequest
+    ) async throws -> FaceImageRecognitionResponse {
+        return try await withCheckedThrowingContinuation { continuation in
+            recognizedFaces(request: request) { result in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
 }
 
 extension VisionImageRecognition {
+    /// Gets all the texts recognized from an image. This is used by the continuation above
+    /// to make the Vision framework usable with async/await.
+    /// - Parameters:
+    ///   - request: The request to be used for the extraction.
+    ///   - completion: The completion to be called with the result of the operation.
     private func recognizedTexts(
         request: TextImageRecognitionRequest,
         completion: @escaping TextImageRecognitionCapableCompletion
@@ -53,6 +75,11 @@ extension VisionImageRecognition {
         }
     }
 
+    /// The handler to be called after the `VNRecognizeTextRequest` is done.
+    /// - Parameters:
+    ///   - request: The request sent to the Vision framework.
+    ///   - error: A potential error raised by the Vision framework.
+    ///   - completion: The completion to be called with the result of the operation.
     private func recognizeTextHandler(
         request: VNRequest,
         error: Error?,
@@ -81,6 +108,11 @@ extension VisionImageRecognition {
 }
 
 extension VisionImageRecognition {
+    /// Gets all the faces recognized from an image. This is used by the continuation above
+    /// to make the Vision framework usable with async/await.
+    /// - Parameters:
+    ///   - request: The request to be used for the extraction.
+    ///   - completion: The completion to be called with the result of the operation.
     private func recognizedFaces(
         request: FaceImageRecognitionRequest,
         completion: @escaping FaceImageRecognitionCapableCompletion
@@ -101,6 +133,12 @@ extension VisionImageRecognition {
         }
     }
 
+    /// The handler to be called after the `VNDetectFaceRectanglesRequest` is done.
+    /// - Parameters:
+    ///   - visionRequest: The request to be used for the extraction.
+    ///   - faceImageRecognitionRequest: The initial request sent by the interactor.
+    ///   - error: A potential error raised by the Vision framework.
+    ///   - completion: The completion to be called with the result of the operation.
     private func recognizeFaceHandler(
         visionRequest: VNRequest,
         faceImageRecognitionRequest: FaceImageRecognitionRequest,
@@ -147,6 +185,13 @@ extension VisionImageRecognition {
         completion(.success(response))
     }
 
+    /// The `boundingRect` returned by the Vision framework is at scale. This method
+    /// adjusts it to correspond to a frame that wraps around the detected face, and then
+    /// gets the image from the original image.
+    /// - Parameters:
+    ///   - boundingBox: The `boundingBox` extracted from Vision's observation.
+    ///   - image: The initial `CGImage`.
+    /// - Returns: A `CGImage` that contains the detected face.
     private func croppedImage(
         using boundingBox: CGRect,
         image: CGImage
@@ -163,6 +208,10 @@ extension VisionImageRecognition {
 }
 
 extension VisionImageRecognition {
+    /// Execute the requests sent using the Vision framework.
+    /// - Parameters:
+    ///   - requests: The requests to be executed.
+    ///   - image: The image in which the requests are going to be executed.
     private func performRequests(_ requests: [VNImageBasedRequest], using image: UIImage) throws {
         guard let cgImage = image.cgImage else {
             throw ImageRecognitionError.noImage
