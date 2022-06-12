@@ -1,8 +1,13 @@
 import UIKit
 
 protocol CiriceSDKCapable {
-    func getAllTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse
-    func getFaces(using request: FaceExtractorRequest) async throws -> FaceExtractorResponse
+    func getAllTexts(
+        using request: TextExtractorRequest
+    ) async throws -> TextExtractorResponse
+
+    func getFaces(
+        using request: FaceExtractorRequest
+    ) async throws -> FaceExtractorResponse
 }
 
 public struct CiriceSDK: CiriceSDKCapable {
@@ -22,7 +27,9 @@ public struct CiriceSDK: CiriceSDKCapable {
         self.faceExtractorInteractable = faceExtractorInteractable
     }
 
-    public func getAllTexts(using request: TextExtractorRequest) async throws -> TextExtractorResponse {
+    public func getAllTexts(
+        using request: TextExtractorRequest
+    ) async throws -> TextExtractorResponse {
         do {            
             return try await textExtractorInteractable.getTexts(using: request)
         } catch let error as VisionImageRecognitionError {
@@ -32,7 +39,9 @@ public struct CiriceSDK: CiriceSDKCapable {
         }
     }
     
-    public func getFaces(using request: FaceExtractorRequest) async throws -> FaceExtractorResponse {
+    public func getFaces(
+        using request: FaceExtractorRequest
+    ) async throws -> FaceExtractorResponse {
         do {
             return try await faceExtractorInteractable.getFaces(using: request)
         } catch let error as VisionImageRecognitionError {

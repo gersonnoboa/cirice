@@ -17,12 +17,16 @@ final class FaceExtractorInteractor: FaceExtractorInteractable {
     
     func getFaces(using request: FaceExtractorRequest) async throws -> FaceExtractorResponse {
         let imageRecognitionRequest = FaceImageRecognitionRequest(
-            image: request.image, maximumAllowedFaceCount:
-                request.maximumAllowedFaceCount
+            image: request.image,
+            maximumAllowedFaceCount: request.maximumAllowedFaceCount
         )
         
-        let imageRecognitionResponse = try await imageRecognitionCapable.recognizedFaces(using: imageRecognitionRequest)
-        let textExtractorResponse = FaceExtractorResponse(faceImages: imageRecognitionResponse.faceImages)
+        let imageRecognitionResponse = try await imageRecognitionCapable.recognizedFaces(
+            using: imageRecognitionRequest
+        )
+        let textExtractorResponse = FaceExtractorResponse(
+            faceImages: imageRecognitionResponse.faceImages
+        )
 
         return textExtractorResponse
     }

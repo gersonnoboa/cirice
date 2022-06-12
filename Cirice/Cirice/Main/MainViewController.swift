@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
 
     private func configureViewController() {
         title = "Cirice"
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     private func configureTableView() {

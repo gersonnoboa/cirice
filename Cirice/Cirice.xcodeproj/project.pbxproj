@@ -13,9 +13,6 @@
 		313E4F3128510C0000DC7CFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F2F28510C0000DC7CFD /* Main.storyboard */; };
 		313E4F3328510C0100DC7CFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F3228510C0100DC7CFD /* Assets.xcassets */; };
 		313E4F3628510C0100DC7CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313E4F3428510C0100DC7CFD /* LaunchScreen.storyboard */; };
-		313E4F4128510C0100DC7CFD /* CiriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F4028510C0100DC7CFD /* CiriceTests.swift */; };
-		313E4F4B28510C0100DC7CFD /* CiriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F4A28510C0100DC7CFD /* CiriceUITests.swift */; };
-		313E4F4D28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E4F4C28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift */; };
 		313E4F5C28510C6400DC7CFD /* CiriceSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 313E4F5B28510C6400DC7CFD /* CiriceSDK */; };
 		315863C62854E04000814E3A /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863C52854E04000814E3A /* MainDataSource.swift */; };
 		315863C82854E04900814E3A /* MainDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863C72854E04900814E3A /* MainDelegate.swift */; };
@@ -28,23 +25,6 @@
 		315863E028551BEB00814E3A /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315863DF28551BEB00814E3A /* ImagePickerDelegate.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		313E4F3D28510C0100DC7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 313E4F1E28510BFF00DC7CFD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 313E4F2528510BFF00DC7CFD;
-			remoteInfo = Cirice;
-		};
-		313E4F4728510C0100DC7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 313E4F1E28510BFF00DC7CFD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 313E4F2528510BFF00DC7CFD;
-			remoteInfo = Cirice;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		313E4F2628510BFF00DC7CFD /* Cirice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cirice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		313E4F2928510BFF00DC7CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,11 +34,6 @@
 		313E4F3228510C0100DC7CFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		313E4F3528510C0100DC7CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		313E4F3728510C0100DC7CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		313E4F3C28510C0100DC7CFD /* CiriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CiriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		313E4F4028510C0100DC7CFD /* CiriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceTests.swift; sourceTree = "<group>"; };
-		313E4F4628510C0100DC7CFD /* CiriceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CiriceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		313E4F4A28510C0100DC7CFD /* CiriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceUITests.swift; sourceTree = "<group>"; };
-		313E4F4C28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		313E4F5928510C2E00DC7CFD /* CiriceSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CiriceSDK; path = ../CiriceSDK; sourceTree = "<group>"; };
 		315863C52854E04000814E3A /* MainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		315863C72854E04900814E3A /* MainDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDelegate.swift; sourceTree = "<group>"; };
@@ -80,20 +55,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		313E4F3928510C0100DC7CFD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		313E4F4328510C0100DC7CFD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -102,10 +63,7 @@
 			children = (
 				313E4F5928510C2E00DC7CFD /* CiriceSDK */,
 				313E4F2828510BFF00DC7CFD /* Cirice */,
-				313E4F3F28510C0100DC7CFD /* CiriceTests */,
-				313E4F4928510C0100DC7CFD /* CiriceUITests */,
 				313E4F2728510BFF00DC7CFD /* Products */,
-				313E4F5A28510C6400DC7CFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				313E4F2628510BFF00DC7CFD /* Cirice.app */,
-				313E4F3C28510C0100DC7CFD /* CiriceTests.xctest */,
-				313E4F4628510C0100DC7CFD /* CiriceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,33 +87,8 @@
 				313E4F3228510C0100DC7CFD /* Assets.xcassets */,
 				313E4F3428510C0100DC7CFD /* LaunchScreen.storyboard */,
 				313E4F3728510C0100DC7CFD /* Info.plist */,
-				315863DD28550CCC00814E3A /* CiriceRouter.swift */,
 			);
 			path = Cirice;
-			sourceTree = "<group>";
-		};
-		313E4F3F28510C0100DC7CFD /* CiriceTests */ = {
-			isa = PBXGroup;
-			children = (
-				313E4F4028510C0100DC7CFD /* CiriceTests.swift */,
-			);
-			path = CiriceTests;
-			sourceTree = "<group>";
-		};
-		313E4F4928510C0100DC7CFD /* CiriceUITests */ = {
-			isa = PBXGroup;
-			children = (
-				313E4F4A28510C0100DC7CFD /* CiriceUITests.swift */,
-				313E4F4C28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift */,
-			);
-			path = CiriceUITests;
-			sourceTree = "<group>";
-		};
-		313E4F5A28510C6400DC7CFD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		315863C42854E02300814E3A /* Main */ = {
@@ -185,6 +116,7 @@
 		315863D82854F8CB00814E3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				315863DD28550CCC00814E3A /* CiriceRouter.swift */,
 				315863D62854F8C300814E3A /* Models.swift */,
 			);
 			path = Models;
@@ -213,42 +145,6 @@
 			productReference = 313E4F2628510BFF00DC7CFD /* Cirice.app */;
 			productType = "com.apple.product-type.application";
 		};
-		313E4F3B28510C0100DC7CFD /* CiriceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 313E4F5328510C0100DC7CFD /* Build configuration list for PBXNativeTarget "CiriceTests" */;
-			buildPhases = (
-				313E4F3828510C0100DC7CFD /* Sources */,
-				313E4F3928510C0100DC7CFD /* Frameworks */,
-				313E4F3A28510C0100DC7CFD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				313E4F3E28510C0100DC7CFD /* PBXTargetDependency */,
-			);
-			name = CiriceTests;
-			productName = CiriceTests;
-			productReference = 313E4F3C28510C0100DC7CFD /* CiriceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		313E4F4528510C0100DC7CFD /* CiriceUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 313E4F5628510C0100DC7CFD /* Build configuration list for PBXNativeTarget "CiriceUITests" */;
-			buildPhases = (
-				313E4F4228510C0100DC7CFD /* Sources */,
-				313E4F4328510C0100DC7CFD /* Frameworks */,
-				313E4F4428510C0100DC7CFD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				313E4F4828510C0100DC7CFD /* PBXTargetDependency */,
-			);
-			name = CiriceUITests;
-			productName = CiriceUITests;
-			productReference = 313E4F4628510C0100DC7CFD /* CiriceUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,14 +157,6 @@
 				TargetAttributes = {
 					313E4F2528510BFF00DC7CFD = {
 						CreatedOnToolsVersion = 13.4;
-					};
-					313E4F3B28510C0100DC7CFD = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = 313E4F2528510BFF00DC7CFD;
-					};
-					313E4F4528510C0100DC7CFD = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = 313E4F2528510BFF00DC7CFD;
 					};
 				};
 			};
@@ -286,8 +174,6 @@
 			projectRoot = "";
 			targets = (
 				313E4F2528510BFF00DC7CFD /* Cirice */,
-				313E4F3B28510C0100DC7CFD /* CiriceTests */,
-				313E4F4528510C0100DC7CFD /* CiriceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -300,20 +186,6 @@
 				313E4F3628510C0100DC7CFD /* LaunchScreen.storyboard in Resources */,
 				313E4F3328510C0100DC7CFD /* Assets.xcassets in Resources */,
 				313E4F3128510C0000DC7CFD /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		313E4F3A28510C0100DC7CFD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		313E4F4428510C0100DC7CFD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,37 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		313E4F3828510C0100DC7CFD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				313E4F4128510C0100DC7CFD /* CiriceTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		313E4F4228510C0100DC7CFD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				313E4F4B28510C0100DC7CFD /* CiriceUITests.swift in Sources */,
-				313E4F4D28510C0100DC7CFD /* CiriceUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		313E4F3E28510C0100DC7CFD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 313E4F2528510BFF00DC7CFD /* Cirice */;
-			targetProxy = 313E4F3D28510C0100DC7CFD /* PBXContainerItemProxy */;
-		};
-		313E4F4828510C0100DC7CFD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 313E4F2528510BFF00DC7CFD /* Cirice */;
-			targetProxy = 313E4F4728510C0100DC7CFD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		313E4F2F28510C0000DC7CFD /* Main.storyboard */ = {
@@ -561,82 +403,6 @@
 			};
 			name = Release;
 		};
-		313E4F5428510C0100DC7CFD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.CiriceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cirice.app/Cirice";
-			};
-			name = Debug;
-		};
-		313E4F5528510C0100DC7CFD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.CiriceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cirice.app/Cirice";
-			};
-			name = Release;
-		};
-		313E4F5728510C0100DC7CFD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.CiriceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cirice;
-			};
-			name = Debug;
-		};
-		313E4F5828510C0100DC7CFD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3KVY8YFHHN;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gerson.CiriceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cirice;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -654,24 +420,6 @@
 			buildConfigurations = (
 				313E4F5128510C0100DC7CFD /* Debug */,
 				313E4F5228510C0100DC7CFD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		313E4F5328510C0100DC7CFD /* Build configuration list for PBXNativeTarget "CiriceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				313E4F5428510C0100DC7CFD /* Debug */,
-				313E4F5528510C0100DC7CFD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		313E4F5628510C0100DC7CFD /* Build configuration list for PBXNativeTarget "CiriceUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				313E4F5728510C0100DC7CFD /* Debug */,
-				313E4F5828510C0100DC7CFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

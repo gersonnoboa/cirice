@@ -32,7 +32,7 @@ final class PictureRequesterPresenter: PictureRequesterPresentable {
     }
 
     func presentInvalidImageError() {
-        controllable?.showError(message: "Invalid image")
+        controllable?.showError(message: "Invalid image.")
     }
 
     func presentExtractionError(error: Error) {

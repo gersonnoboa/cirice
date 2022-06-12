@@ -6,7 +6,9 @@ typealias TextImageRecognitionCapableCompletion = ((Result<TextImageRecognitionR
 typealias FaceImageRecognitionCapableCompletion = ((Result<FaceImageRecognitionResponse, Error>) -> Void)
 
 final class VisionImageRecognition: ImageRecognitionCapable {
-    func recognizedFaces(using request: FaceImageRecognitionRequest) async throws -> FaceImageRecognitionResponse {
+    func recognizedFaces(
+        using request: FaceImageRecognitionRequest
+    ) async throws -> FaceImageRecognitionResponse {
         return try await withCheckedThrowingContinuation { continuation in
             recognizedFaces(request: request) { result in
                 switch result {
@@ -51,7 +53,11 @@ extension VisionImageRecognition {
         }
     }
 
-    private func recognizeTextHandler(request: VNRequest, error: Error?, completion: TextImageRecognitionCapableCompletion) {
+    private func recognizeTextHandler(
+        request: VNRequest,
+        error: Error?,
+        completion: TextImageRecognitionCapableCompletion
+    ) {
         if let error = error {
             completion(.failure(
                 VisionImageRecognitionError.visionError(error.localizedDescription)
@@ -125,7 +131,8 @@ extension VisionImageRecognition {
                 let originalCgImage = originalImage.cgImage,
                 let croppedCgImage = croppedImage(
                     using: observation.boundingBox,
-                    image: originalCgImage)
+                    image: originalCgImage
+                )
             else { return nil }
 
             return UIImage(

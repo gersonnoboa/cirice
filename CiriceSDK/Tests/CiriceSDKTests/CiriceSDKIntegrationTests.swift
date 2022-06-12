@@ -27,6 +27,7 @@ final class CiriceSDKIntegrationTests: XCTestCase {
             XCTFail("Image not loaded")
             return
         }
+        
         let request = FaceExtractorRequest(image: image)
 
         do {
@@ -42,6 +43,7 @@ final class CiriceSDKIntegrationTests: XCTestCase {
             XCTFail("Image not loaded")
             return
         }
+
         let request = FaceExtractorRequest(image: image)
 
         do {

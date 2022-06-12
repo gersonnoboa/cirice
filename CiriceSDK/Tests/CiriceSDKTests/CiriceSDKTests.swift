@@ -5,7 +5,6 @@ final class CiriceSDKTests: XCTestCase {
     func testGetAllTextsSuccess() async {
         let mock = ImageRecognitionCapableSuccessMock()
         let interactor = TextExtractorInteractor(imageRecognitionCapable: mock)
-        
         let sdk = CiriceSDK(textExtractorInteractable: interactor)
         let request = TextExtractorRequest(image: UIImage.add)
         let expectedTexts = ["Elamisluba"]
@@ -22,7 +21,6 @@ final class CiriceSDKTests: XCTestCase {
     func testGetAllTextsError() async {
         let mock = ImageRecognitionCapableFailureMock()
         let interactor = TextExtractorInteractor(imageRecognitionCapable: mock)
-        
         let sdk = CiriceSDK(textExtractorInteractable: interactor)
         let request = TextExtractorRequest(image: UIImage.add)
         
@@ -37,12 +35,13 @@ final class CiriceSDKTests: XCTestCase {
     func testGetFaceSuccess() async {
         let mock = ImageRecognitionCapableSuccessMock()
         let interactor = FaceExtractorInteractor(imageRecognitionCapable: mock)
-
         let sdk = CiriceSDK(faceExtractorInteractable: interactor)
+
         guard let image = UIImage(named: "max", in: Bundle.module, with: .none) else {
             XCTFail("Image not loaded")
             return
         }
+
         let request = FaceExtractorRequest(image: image)
 
         do {
@@ -56,12 +55,13 @@ final class CiriceSDKTests: XCTestCase {
     func testGetFacesError() async {
         let mock = ImageRecognitionCapableFailureMock()
         let interactor = FaceExtractorInteractor(imageRecognitionCapable: mock)
-
         let sdk = CiriceSDK(faceExtractorInteractable: interactor)
+
         guard let image = UIImage(named: "family", in: Bundle.module, with: .none) else {
             XCTFail("Image not loaded")
             return
         }
+
         let request = FaceExtractorRequest(image: image)
 
         do {

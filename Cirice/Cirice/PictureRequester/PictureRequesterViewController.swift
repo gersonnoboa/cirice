@@ -109,13 +109,3 @@ extension PictureRequesterViewController: PictureRequesterControllable {
         present(alert, animated: true)
     }
 }
-
-extension UIImagePickerController {
-    open override var childForStatusBarHidden: UIViewController? {
-        return nil
-    }
-
-    open override var prefersStatusBarHidden: Bool {
-        return true
-    }
-}
