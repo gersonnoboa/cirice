@@ -34,7 +34,7 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
             let response = try await CiriceSDK().getFaces(using: request)
 
             guard let face = response.faceImages.first else {
-                presentable.presentGenericError()
+                presentable.presentNoResults()
                 return
             }
             

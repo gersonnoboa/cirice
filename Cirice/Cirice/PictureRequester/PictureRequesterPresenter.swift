@@ -6,8 +6,8 @@ protocol PictureRequesterPresentable {
     func presentFace(image: UIImage, originalImage: UIImage)
     func presentInvalidImageError()
     func presentMaximumNumberOfFacesError()
-    func presentGenericError()
     func presentExtractionError(error: Error)
+    func presentNoResults()
 }
 
 final class PictureRequesterPresenter: PictureRequesterPresentable {
@@ -35,15 +35,15 @@ final class PictureRequesterPresenter: PictureRequesterPresentable {
         controllable?.showError(message: "Invalid image")
     }
 
-    func presentGenericError() {
-        controllable?.showError(message: "An error has occurred. Please try again.")
-    }
-
     func presentExtractionError(error: Error) {
         controllable?.showError(message: "An error has occurred. " + error.localizedDescription)
     }
 
     func presentMaximumNumberOfFacesError() {
         controllable?.showError(message: "Only one face per image is allowed.")
+    }
+
+    func presentNoResults() {
+        controllable?.showError(message: "No faces have been detected in the picture.")
     }
 }
