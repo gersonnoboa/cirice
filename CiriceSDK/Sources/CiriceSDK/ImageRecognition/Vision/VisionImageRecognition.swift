@@ -121,28 +121,37 @@ extension VisionImageRecognition {
         let recognizedFaces: [UIImage] = observations.compactMap { observation in
             let originalImage = faceImageRecognitionRequest.image
             
-            guard let originalCgImage = originalImage.cgImage else { return nil }
-            
-            let originalImageSize  = faceImageRecognitionRequest.image.size
-            let boundingBox = observation.boundingBox
-            let croppedImageSize = CGSize(
-                width: boundingBox.width * originalImageSize.width,
-                height: boundingBox.height * originalImageSize.height
+            guard
+                let originalCgImage = originalImage.cgImage,
+                let croppedCgImage = croppedImage(
+                    using: observation.boundingBox,
+                    image: originalCgImage)
+            else { return nil }
+
+            return UIImage(
+                cgImage: croppedCgImage,
+                scale: 1.0,
+                orientation: originalImage.imageOrientation
             )
-            let croppedImageOrigin = CGPoint(
-                x: boundingBox.minX * originalImageSize.width,
-                y: (1 - observation.boundingBox.minY) * originalImageSize.height - croppedImageSize.height
-            )
-            let croppedImageRect = CGRect(origin: croppedImageOrigin, size: croppedImageSize)
-            
-            guard let croppedCgImage = originalCgImage.cropping(to: croppedImageRect) else { return nil }
-            
-            return UIImage(cgImage: croppedCgImage)
         }
 
         let response = FaceImageRecognitionResponse(faceImages: recognizedFaces)
 
         completion(.success(response))
+    }
+
+    private func croppedImage(
+        using boundingBox: CGRect,
+        image: CGImage
+    ) -> CGImage? {
+        let width = boundingBox.width * CGFloat(image.width)
+        let height = boundingBox.height * CGFloat(image.height)
+        let x = boundingBox.origin.x * CGFloat(image.width)
+        let y = (1 - boundingBox.origin.y) * CGFloat(image.height) - height
+
+        let croppingRect = CGRect(x: x, y: y, width: width, height: height)
+        let image = image.cropping(to: croppingRect)
+        return image
     }
 }
 
@@ -151,13 +160,31 @@ extension VisionImageRecognition {
         guard let cgImage = image.cgImage else {
             throw VisionImageRecognitionError.noImage
         }
-        
-        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage)
+
+        let imageRequestHandler = VNImageRequestHandler(
+            cgImage: cgImage
+        )
         
         do {
             try imageRequestHandler.perform(requests)
         } catch {
             throw VisionImageRecognitionError.visionError(error.localizedDescription)
+        }
+    }
+}
+
+extension CGImagePropertyOrientation {
+    init(_ uiOrientation: UIImage.Orientation) {
+        switch uiOrientation {
+        case .up: self = .up
+        case .upMirrored: self = .upMirrored
+        case .down: self = .down
+        case .downMirrored: self = .downMirrored
+        case .left: self = .left
+        case .leftMirrored: self = .leftMirrored
+        case .right: self = .right
+        case .rightMirrored: self = .rightMirrored
+        @unknown default: self = .up
         }
     }
 }
