@@ -34,7 +34,11 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
                 texts: response.texts,
                 originalImage: image
             )
-        } catch {
+        } catch CiriceError.textExtractor(let error)
+            where error == ImageRecognitionError.noResults {
+            presentable.presentNoTextResults()
+        }
+        catch {
             presentable.presentExtractionError(error: error)
         }
     }
@@ -47,7 +51,7 @@ final class PictureRequesterInteractor: PictureRequesterInteractable {
             let response = try await CiriceSDK().getFaces(using: request)
 
             guard let face = response.faceImages.first else {
-                presentable.presentNoResults()
+                presentable.presentNoFaceResults()
                 return
             }
             

@@ -25,8 +25,11 @@ protocol PictureRequesterPresentable {
     /// - Parameter error: Error sent by the CiriceSDK.
     func presentExtractionError(error: Error)
 
-    /// Formats the text to be presented when there are no results to be displayed.
-    func presentNoResults()
+    /// Formats the text to be presented when there are no face results to be displayed.
+    func presentNoFaceResults()
+
+    /// Formats the text to be presented when there are no text results to be displayed.
+    func presentNoTextResults()
 }
 
 /// Presenter that describes all picture requester actions.
@@ -78,7 +81,12 @@ final class PictureRequesterPresenter: PictureRequesterPresentable {
     }
 
     /// Formats the text to be presented when there are no results to be displayed.
-    func presentNoResults() {
+    func presentNoFaceResults() {
         controllable?.showError(message: "No faces have been detected in the picture.")
+    }
+
+    /// Formats the text to be presented when there are no text results to be displayed.
+    func presentNoTextResults() {
+        controllable?.showError(message: "No texts have been detected in the picture.")
     }
 }

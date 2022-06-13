@@ -101,6 +101,11 @@ extension VisionImageRecognition {
             return observation.topCandidates(1).first?.string
         }
 
+        if recognizedStrings.isEmpty {
+            completion(.failure(ImageRecognitionError.noResults))
+            return
+        }
+
         let response = TextImageRecognitionResponse(texts: recognizedStrings)
 
         completion(.success(response))

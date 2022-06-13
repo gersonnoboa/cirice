@@ -23,13 +23,16 @@ final class VisionImageRecognitionTests: XCTestCase {
         }
     }
     
-    func testTextExtractionSuccessWithTextlessImage() async {
+    func testTextExtractionFailureWithTextlessImage() async {
         let request = TextImageRecognitionRequest(image: UIImage.add)
         do {
-            let response = try await visionImageRecognition.recognizedTexts(using: request)
-            XCTAssertEqual(response.texts, [])
+            let _ = try await visionImageRecognition.recognizedTexts(using: request)
+            XCTFail("Should fail")
         } catch {
-            XCTFail("Should succeed")
+            XCTAssertEqual(
+                error as! ImageRecognitionError,
+                ImageRecognitionError.noResults
+            )
         }
     }
     
